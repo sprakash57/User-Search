@@ -9,9 +9,15 @@
     <button (click)="searchUser()">Search</button>
   </form>
 
-  {{users | json}}
+  <div *ngFor="let profile of card">
+    <!-- <p>Name: {{profile.name}}</p> -->
+    <img src="{{profile.avatar_url}}" alt="image" style="width: 10%;height: 10%">
+    <p>Url: {{profile.html_url}}</p>
+    <p>Repos: {{profile.public_repos}}</p>
+    <p>{{profile.followers}}</p>
+    <button (click)="fetchDetail(profile.login)">Detail</button>
+    {{profile.login}}
+  </div>
   
-  
-
 
 
