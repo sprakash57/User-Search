@@ -12,8 +12,8 @@
             Sort
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" style="color:rgb(55, 123, 226);">A-Z</a>
-            <a class="dropdown-item" href="#" style="color:rgb(55, 123, 226);">Z-A</a>
+            <a class="dropdown-item" href="#" style="color:#2199e8;">A-Z</a>
+            <a class="dropdown-item" href="#" style="color:#2199e8;">Z-A</a>
           </div>
         </li>
       </ul>
@@ -23,8 +23,8 @@
       </form>
     </div>
   </nav>
-<div class="results">Total Results:</div>
-<div class="container" *ngFor="let profile of profiles">
+<div class="results" [class.d-none]="resultFlag">Total Results: {{results}}</div>
+<div class="container" *ngFor="let profile of profiles | paginate: {itemsPerPage:3, currentPage:p}">
   <div class="card">
     <img src="{{profile.avatar_url}}" alt="image">
     <div class="card-body">
@@ -50,6 +50,7 @@
   </div>
 
 </div>
+<pagination-controls previousLabel="" nextLabel="" (pageChange)="p =$event"></pagination-controls>
 
 
 <!-- <div *ngFor="let profile of card">

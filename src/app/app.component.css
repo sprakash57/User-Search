@@ -4,10 +4,20 @@
     border-color: white;
 }
 
-.card, .results{
+body{
+    background-color: #f8f8f8;
+    font-family: 'Lato', sans-serif;
+}
+
+.card{
     margin: 4px 20%;
     flex-direction: row;
     border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2);
+}
+
+.catd:hover{
+    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.4);
 }
 
 .card-body{
@@ -21,26 +31,25 @@
 
 .card-title{
     margin: 0;
-    color: rgb(55, 123, 226);
+    color: #2199e8;
 }
 
 .detail-tab{
     margin: 0 20%;
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-right: 1px solid rgba(0,0,0,.125);
 }
 
 .detail-btn{
     align-self: flex-end;
     margin-right: 10%;
-    margin-bottom: 1.7rem;
-    border-left: 1px solid rgba(0,0,0,.125);
-    border-right: 1px solid rgba(0,0,0,.125);
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 1.7rem; 
 }
 
 .btn-color{
-    color: rgb(55, 123, 226);
+    color: #2199e8;
     background-color: white;
-    border-color: rgb(55, 123, 226);
+    border-color: #2199e8;
 }
 
 .card img{
@@ -51,10 +60,24 @@
 }
 
 nav{
-    background-color: rgb(55, 123, 226);
+    font-family: 'Lato', sans-serif;
+    background-color: #2199e8;
     color: white;
 }
 
 nav a{
     color: white;
+}
+
+pagination-controls{
+    float: right;
+    margin-right: 24%;
+}
+
+.results{
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
