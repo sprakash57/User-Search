@@ -35,6 +35,7 @@ body{
 }
 
 .detail-tab{
+    background-color: white;
     margin: 0 20%;
     border-left: 1px solid rgba(0,0,0,.125);
     border-right: 1px solid rgba(0,0,0,.125);
@@ -71,6 +72,7 @@ nav a{
 
 pagination-controls{
     float: right;
+    margin-top: 10px;
     margin-right: 24%;
 }
 

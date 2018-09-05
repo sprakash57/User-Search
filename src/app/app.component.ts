@@ -11,7 +11,7 @@ export class AppComponent {
   userName = "";
   results:number;
   loginId:string;
-  resultFlag = false;
+  resultFlag = true;
   details = "Details";
   users: any;
   repos: any;
@@ -21,7 +21,7 @@ export class AppComponent {
   constructor(private _http: HttpClient) { }
 
   searchUser() {
-    this.resultFlag = true;
+    this.resultFlag = false;
     this._http.get("https://api.github.com/search/users?q=" + this.userName + "+in%3Afullname&type=Users")
       .subscribe(data => {
         this.users = data;
@@ -47,4 +47,13 @@ export class AppComponent {
           }
         });
   }
+
+  ascendingOrder(){
+    this.profiles.sort();
+  }
+
+  descendingOrder(){
+    this.profiles.sort().reverse();
+  }
+
 }
