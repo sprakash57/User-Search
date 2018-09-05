@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">gitHub Repos</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,25 +12,25 @@
             Sort
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">A-Z</a>
-            <a class="dropdown-item" href="#">Z-A</a>
+            <a class="dropdown-item" href="#" style="color:rgb(55, 123, 226);">A-Z</a>
+            <a class="dropdown-item" href="#" style="color:rgb(55, 123, 226);">Z-A</a>
           </div>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="userName" [(ngModel)]="userName">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUser()">Search</button>
+        <button class="btn btn-search my-2 my-sm-0" (click)="searchUser()">Search</button>
       </form>
     </div>
   </nav>
-
+<div class="results">Total Results:</div>
 <div class="container" *ngFor="let profile of profiles">
   <div class="card">
-    <img src="{{profile.avatar_url}}" alt="image" style="width: 10%;height: 10%">
+    <img src="{{profile.avatar_url}}" alt="image">
     <div class="card-body">
-      <h5 class="card-title">{{profile.name}}</h5>
-      <p>Profile URL: {{profile.html_url}}</p>
-      <p>Repos: {{profile.public_repos}}</p>
+      <h2 class="card-title">{{profile.name}}</h2>
+      <p style="margin-bottom:2rem;">Profile URL: {{profile.html_url}}</p>
+      <p style="margin-bottom:0;">Repos: {{profile.public_repos}}</p>
       <p>Followers: {{profile.followers}}</p>
     </div>
     <div class="detail-btn">

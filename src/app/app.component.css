@@ -1,12 +1,27 @@
-.card{
+.btn-search, .detail-btn:hover{
+    color: white;
+    background-color: transparent;
+    border-color: white;
+}
+
+.card, .results{
     margin: 4px 20%;
     flex-direction: row;
     border-radius: 5px;
 }
 
+.card-body{
+    padding: 2rem 0 0 0;
+}
+
 .container{
     display: flex;
     flex-direction: column;
+}
+
+.card-title{
+    margin: 0;
+    color: rgb(55, 123, 226);
 }
 
 .detail-tab{
@@ -15,10 +30,31 @@
 
 .detail-btn{
     align-self: flex-end;
+    margin-right: 10%;
+    margin-bottom: 1.7rem;
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-right: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 .btn-color{
-    color: blue;
-    background-color: bisque;
-    border-color: blue;
+    color: rgb(55, 123, 226);
+    background-color: white;
+    border-color: rgb(55, 123, 226);
+}
+
+.card img{
+    width: 17%;
+    height: 17%;
+    margin: 15px;
+    border-radius: 50%;
+}
+
+nav{
+    background-color: rgb(55, 123, 226);
+    color: white;
+}
+
+nav a{
+    color: white;
 }
