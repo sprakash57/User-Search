@@ -9,12 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'app';
   userName = "";
-  login = "";
+  loginId:string;
   searchFlag = false;
   details = "Details";
   users: any;
-  card = [];
+  repos: any;
   repository = [];
+  profiles = [];
   constructor(private _http: HttpClient) { }
 
   searchUser() {
@@ -25,14 +26,22 @@ export class AppComponent {
         for (let i = 0; i < this.users.items.length; i++) {
           this._http.get("https://api.github.com/users/" + this.users.items[i].login)
             .subscribe((data) => {
-              this.card[i] = data;
-
+              this.profiles[i] = data;
             });
         }
       });
-
-
   }
 
-
+  fetchRepos(id:string){
+    this._http.get(`https://api.github.com/users/${id​}/repos`)
+        .subscribe(data =>{
+          this.repos = data; 
+          for(let item of this.repos){
+            if(item.owner.login === id){
+              this.loginId = id;
+              this.repository.push(item);
+            }
+          }
+        });
+  }
 }
