@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ISummary } from './summary';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  p:number = 1;
+export class AppComponent implements OnInit{
+  users: any;
+  repos = [];
   userName = "";
-  results:number;
-  loginId:string;
+  results = 0;
+  loginId = "";
+  p = 1;
   resultFlag = true;
   details = "Details";
-  users: any;
-  repos: any;
   repository = [];
   profiles = [];
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http:HttpClient) { }
 
   searchUser() {
     this.resultFlag = false;
@@ -36,13 +37,15 @@ export class AppComponent {
   }
 
   fetchRepos(id:string){
-    this._http.get(`https://api.github.com/users/${id​}/repos?per_page=100type=owner`)
+    this.repos = [];
+
+    this._http.get<ISummary[]>(`https://api.github.com/users/${id​}/repos?per_page=100type=owner`)
         .subscribe(data =>{
-          this.repos = data; 
-          for(let item of this.repos){
+         this.repository = data;
+         for(let item of this.repository){
             if(item.owner.login === id){
               this.loginId = id;
-              this.repository.push(item);
+              this.repos.push(item);
             }
           }
         });
@@ -54,6 +57,10 @@ export class AppComponent {
 
   descendingOrder(){
     this.profiles.sort().reverse();
+  }
+
+  ngOnInit(){
+    
   }
 
 }

@@ -27,22 +27,22 @@
 <div class="results" [class.d-none]="resultFlag">Total Results: {{results}}</div>
 <div class="container" *ngFor="let profile of profiles | paginate: {itemsPerPage:3, currentPage:p}">
   <div class="card">
-    <img src="{{profile.avatar_url}}" alt="image">
+    <img src="{{profile.avatar_url}}" alt="image" contenteditable="true" (input)="profile.avatar_url=$event.target.innerText">
     <div class="card-body">
-      <h2 class="card-title">{{profile.name}}</h2>
-      <p style="margin-bottom:2rem;">Profile URL: {{profile.html_url}}</p>
-      <p style="margin-bottom:0;">Repos: {{profile.public_repos}}</p>
-      <p>Followers: {{profile.followers}}</p>
+      <h2 class="card-title" contenteditable="true" (input)="profile.name=$event.target.innerText">{{profile.name}}</h2>
+      <p style="margin-bottom:2rem;" contenteditable="true" (input)="profile.html_url=$event.target.innerText">Profile URL: {{profile.html_url}}</p>
+      <p style="margin-bottom:0;" contenteditable="true" (input)="profile.public_repos=$event.target.innerText">Repos: {{profile.public_repos}}</p>
+      <p contenteditable="true" (input)="profile.followers=$event.target.innerText">Followers: {{profile.followers}}</p>
     </div>
     <div class="detail-btn">
-        <button class="btn btn-color" (click)="fetchRepos(profile.login)">Details</button>
-    </div>
-    
+        <button class="btn btn-color" (click)="fetchRepos(profile.login)">{{details}}</button>
+    </div> 
   </div>
-  <div class="detail-tab">
-    <table class="table table-striped" *ngIf="profile.login === loginId">
+
+  <div class="detail-tab" *ngIf="profile.login === loginId">
+    <table class="table table-striped">
       <tbody>
-        <tr *ngFor="let repo of repository" style="text-align: center;">
+        <tr *ngFor="let repo of repos" style="text-align: center;">
           <td>{{repo.name}}</td>
           <td>{{repo.language}}</td>
         </tr>
@@ -52,21 +52,3 @@
 
 </div>
 <pagination-controls previousLabel="" nextLabel="" (pageChange)="p =$event"></pagination-controls>
-
-
-<!-- <div *ngFor="let profile of card">
-  <p>Name: {{profile.name}}</p>
-  <img src="{{profile.avatar_url}}" alt="image" style="width: 10%;height: 10%">
-  <p>Url: {{profile.html_url}}</p>
-  <p>Repos: {{profile.public_repos}}</p>
-  <p>{{profile.followers}}</p>
-  <button (click)="fetchRepos(profile.login)">Detail</button>
-  <table class="table table-striped" *ngIf="profile.login === loginId">
-    <tbody>
-      <tr *ngFor="let repo of repository">
-        <td>{{repo.name}}</td>
-        <td>{{repo.language}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->

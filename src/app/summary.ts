@@ -1,4 +1,4 @@
-export interface Summary {
+export interface ISummary {
     login: string;
     id: number;
     node_id: string;
